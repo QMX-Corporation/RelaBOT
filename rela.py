@@ -45,19 +45,14 @@ def prgnFall():
   # The Menu
   print("| --- MENU OF ENTRIES --- |\n")
   print("| y/Y/Youtube/youtube= Youtube |\n")
-  print("| a/A/Acode/acode = Acode |\n")
   print("| --- MENU OF ENTRIES --- |\n")
   # What open App?
-  prgn = input("What open app?  \n")
+  prgn = input("What open app?  ")
   # 1. Verify 
   # Is y (Youtube)?
   if prgn in ["y", "Y", "Youtube", "youtube"]:
     # Executes the Youtube
     subprocess.run(['am', 'start', 'com.google.android.youtube'])
-  # Is a (Acode)?
-  elif prgn in ["a", "A", "Acode", "acode"]:
-    # Executes the Acode
-    subprocess.run(['am', 'start', 'com.fox.acode'])
   # Not, handling
   else:
     print("Not commands found.")
