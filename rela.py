@@ -1,3 +1,11 @@
+# --- LICENSE HEADER ---
+#  MIT License.
+# Copyright (C) QMX Corporation (all maintainers, authors and collaborators).
+# The relaBOY is licensed and released under 
+#  MIT License.
+# --- LICENSE HEADER ---
+
+
 # --- Libs Importeds ---
 import sqlite3
 import os 
@@ -20,30 +28,41 @@ conn_lite.commit()
 # Close the sqTable
 conn_lite.close()
 
+
 # The Function:
 # Monitoring the Power Botton, if press
 # in the Botton: The Termux executes a prgn of
 # What is open app 
 def getBottonPower():
-  powerIsPressed = False  # A boolean of 
-  # Botton Power
-  # 1. Verify in real time captures what running or 
-  # if Botton Power interacted with System State
-  smnaState = subprocess.check_output(['termux-battery-status'])
-  # 1.1. Decodify the smnaState for a normal text 
-  smna_text = smnaState.decode('utf-8')
-  # 2. Is rmnaka?
-  chara_key = "present: true"
-  if chara_key in smna_text:
-    return True
-  else:
-    return False
+  # Not using root, 
+  # a 'return True' is necessary.
+  return True
+
   
 # The function:
 # Executes a prgn
 def prgnFall():
-  prgn = input("What is app open [Youtube=y, Acode=a]?  ")
+  # The Menu
+  print("| --- MENU OF ENTRIES --- |\n")
+  print("| y/Y/Youtube/youtube= Youtube |\n")
+  print("| a/A/Acode/acode = Acode |\n")
+  print("| --- MENU OF ENTRIES --- |\n")
+  # What open App?
+  prgn = input("What open app?  \n")
+  # 1. Verify 
+  # Is y (Youtube)?
+  if prgn in ["y", "Y", "Youtube", "youtube"]:
+    # Executes the Youtube
+    subprocess.run(['am', 'start', 'com.google.android.youtube'])
+  # Is a (Acode)?
+  elif prgn in ["a", "A", "Acode", "acode"]:
+    # Executes the Acode
+    subprocess.run(['am', 'start', 'com.fox.acode'])
+  # Not, handling
+  else:
+    print("Not commands found.")
 
+    
 # The main Function 
 def RelaBOT():
   # 1. Entry in a loop
